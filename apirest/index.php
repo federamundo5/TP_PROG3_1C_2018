@@ -6,6 +6,7 @@ require '../composer/vendor/autoload.php';
 require 'clases/AccesoDatos.php';
 require 'clases/empleadoApi.php';
 require 'clases/mesaApi.php';
+require 'clases/MWAutentificarEmpleado.php';
 
 
 
@@ -42,11 +43,11 @@ $app->group('/empleado', function () {
  
   $this->get('/{id}', \empleadoApi::class . ':traerUno');
 
-  $this->post('/', \empleadoApi::class . ':CargarUno');
+  $this->post('/', \empleadoApi::class . ':CargarUno') -> add(\MWparaAutentificarEmpleado::class . ':VerificarUsuario');
 
   $this->post('/ModificarUno', \empleadoApi::class . ':ModificarUno');
 
-  $this->post('/BorrarUno', \empleadoApi::class . ':BorrarUno');
+  $this->post('/BorrarUno', \empleadoApi::class . ':BorrarUno') -> add(\MWparaAutentificarEmpleado::class . ':VerificarUsuario');
 
 
   $this->delete('/', \empleadoApi::class . ':BorrarUno');
