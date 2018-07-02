@@ -22,12 +22,16 @@ class empleadoApi extends Empleado implements IApiUsable
         //var_dump($ArrayDeParametros);
         $nombre= $ArrayDeParametros['nombre'];
         $apellido= $ArrayDeParametros['apellido'];
-        $sector= $ArrayDeParametros['sector'];
+		$sector= $ArrayDeParametros['sector'];
+		$clave= $ArrayDeParametros['clave'];
+
         
         $empleado = new Empleado();
         $empleado->nombre=$nombre;
         $empleado->apellido=$apellido;
-        $empleado->sector=$sector;
+		$empleado->sector=$sector;
+		$empleado->clave=$clave;
+
         $empleado->InsertarEmpleado();
 
         $response->getBody()->write("se guardo el Empleado");
@@ -38,8 +42,19 @@ class empleadoApi extends Empleado implements IApiUsable
 
       public function BorrarUno($request, $response, $args) {
      	$ArrayDeParametros = $request->getParsedBody();
-     	$id=$ArrayDeParametros['idEmpleado'];
-     	$empleado= new Empleado();
+		 $id=$args['id'];
+
+		 $consulta = $request->getAttribute('consulta');
+		 		
+			if($consulta == "Suspension"){
+				$empleado=Empleado::TraerUnEmpleado($id);
+				$empleado->suspendido = 1;
+				$resultado =$empleado->ModificarEmpleado();
+				$objDelaRespuesta->resultado=$resultado;
+			}
+    else{
+		 
+		      	$empleado= new Empleado();
 		 $empleado->idEmpleado=$id;
      	$cantidadDeBorrados=$empleado->BorrarEmpleado();
 
@@ -52,20 +67,24 @@ class empleadoApi extends Empleado implements IApiUsable
 	    	else
 	    	{
 	    		$objDelaRespuesta->resultado="no Borro nada!!!";
-	    	}
+			}
+			
+		}
 	    $newResponse = $response->withJson($objDelaRespuesta, 200);  
-      	return $id;
+      	return $newResponse;
     }
      
      public function ModificarUno($request, $response, $args) {
-     	//$response->getBody()->write("<h1>Modificar  uno</h1>");
-     	$ArrayDeParametros = $request->getParsedBody();
-	    //var_dump($ArrayDeParametros);    	
+		 //$response->getBody()->write("<h1>Modificar  uno</h1>");
+		 
+
 	    $empleado = new Empleado();
-		$empleado->idEmpleado=$ArrayDeParametros['idEmpleado'];
-		$empleado->nombre=$ArrayDeParametros['nombre'];
-	    $empleado->apellido=$ArrayDeParametros['apellido'];
-	    $empleado->sector=$ArrayDeParametros['sector'];
+		$empleado->idEmpleado=$args['id'];
+		$empleado->nombre=$args['nombre'];
+	    $empleado->apellido=$args['apellido'];
+		$empleado->sector=$args['sector'];
+		$empleado->clave=$args['clave'];
+
 	   	$resultado =$empleado->ModificarEmpleado();
 	   	$objDelaRespuesta= new stdclass();
 		//var_dump($resultado);

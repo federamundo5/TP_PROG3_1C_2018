@@ -3,7 +3,9 @@ class Mesa
 {
 	public $IdMesa;
  	public $Clave;
-  	public $IdMozo;
+	public $IdMozo;
+   public $Estado;
+
 
 
 
@@ -28,9 +30,11 @@ class Mesa
 			$consulta =$objetoAccesoDato->RetornarConsulta("
 				update Mesa 
 				set Clave=:clave,
+				 Estado=:estado,
 				IdMozo=:idmozo
 				WHERE IdMesa=:id");
 			$consulta->bindValue(':clave',$this->Clave, PDO::PARAM_STR);
+			$consulta->bindValue(':estado',$this->Estado, PDO::PARAM_STR);
 			$consulta->bindValue(':idmozo', $this->IdMozo, PDO::PARAM_INT);
 			$consulta->bindValue(':id', $this->IdMesa, PDO::PARAM_INT);
 
