@@ -1,0 +1,798 @@
+{
+	"variables": [],
+	"info": {
+		"name": "comanda",
+		"_postman_id": "99f15694-cb4a-f39e-9d12-38dd64c917df",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "LOGIN Socio",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/login",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "Carlos",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "password",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "LOGIN "
+			},
+			"response": []
+		},
+		{
+			"name": "Login Cervecero",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/login",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "Pepe",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "Pepe1",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN bartender",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/login",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "bartender",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "Pepe1",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Login mozo",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/login",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "Carla",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "1",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN Cocinero",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/login",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "Hernan",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "3",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST MESA",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/mesa/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzA0OTI1NjYsImV4cCI6MTUzMDQ5ODcyOCwiYXVkIjoiZTNiMGNmOTcyOGM1YjJhMWU4NmE1NWUyYTdjOTAwOGU4MDQzNGQyOCIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8ifSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.09UZ7L7gvEe7-TNM9tIwB5oCPE3VxcTb4pgaDPLvfog",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Clave",
+							"value": "MESA17",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Estado",
+							"value": "Cerrada",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "POST MESA"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT MESA (MODIFICACION)",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/mesa/1/MESA1_Edit/1/Cerrada",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzA0OTI1NjYsImV4cCI6MTUzMDQ5ODcyOCwiYXVkIjoiZTNiMGNmOTcyOGM1YjJhMWU4NmE1NWUyYTdjOTAwOGU4MDQzNGQyOCIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8ifSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.09UZ7L7gvEe7-TNM9tIwB5oCPE3VxcTb4pgaDPLvfog",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete mesa",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/mesa/4",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzA0OTI1NjYsImV4cCI6MTUzMDQ5ODcyOCwiYXVkIjoiZTNiMGNmOTcyOGM1YjJhMWU4NmE1NWUyYTdjOTAwOGU4MDQzNGQyOCIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8ifSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.09UZ7L7gvEe7-TNM9tIwB5oCPE3VxcTb4pgaDPLvfog",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "DELETE MESA"
+			},
+			"response": []
+		},
+		{
+			"name": "GET mesas",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/mesa/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "GET mesas"
+			},
+			"response": []
+		},
+		{
+			"name": "POST Empleado",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/empleado/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzA0OTI1NjYsImV4cCI6MTUzMDQ5ODcyOCwiYXVkIjoiZTNiMGNmOTcyOGM1YjJhMWU4NmE1NWUyYTdjOTAwOGU4MDQzNGQyOCIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8ifSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.09UZ7L7gvEe7-TNM9tIwB5oCPE3VxcTb4pgaDPLvfog",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "Pepe",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "apellido",
+							"value": "Ramirez",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "sector",
+							"value": "cerveceria",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "Pepe1",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "POST Empleado"
+			},
+			"response": []
+		},
+		{
+			"name": "GET Empleados",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/empleado/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE empleado",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/empleado/8/",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzA0OTI1NjYsImV4cCI6MTUzMDQ5ODcyOCwiYXVkIjoiZTNiMGNmOTcyOGM1YjJhMWU4NmE1NWUyYTdjOTAwOGU4MDQzNGQyOCIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8ifSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.09UZ7L7gvEe7-TNM9tIwB5oCPE3VxcTb4pgaDPLvfog",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update empleado (PUT)",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/empleado/8/Siii/Nooo/SIi/2",
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST Encuesta",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/encuesta/",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "experiencia",
+							"value": "8",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "idMozo",
+							"value": "6",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "idCocinero",
+							"value": "2",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "puntuacionMozo",
+							"value": "5",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "puntuacionRestaurante",
+							"value": "7",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "puntuacionCocinero",
+							"value": "6",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "puntuacionMesa",
+							"value": "6",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET Encuesta",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/encuesta/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzA0OTc2NzcsImV4cCI6MTUzMDUwMzgzOSwiYXVkIjoiZTNiMGNmOTcyOGM1YjJhMWU4NmE1NWUyYTdjOTAwOGU4MDQzNGQyOCIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8ifSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.fqHvhrtGGIuG1hbPARCPM1u96_SOlO4w28GF2WvNe7g",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pedido",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/pedido/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzA1NTM4MDAsImV4cCI6MTUzMDU1OTk2MiwiYXVkIjoiZTNiMGNmOTcyOGM1YjJhMWU4NmE1NWUyYTdjOTAwOGU4MDQzNGQyOCIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8ifSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.9RbfK5294llfLIpNkY6C79r33F6TroUxv_0N5wZ-q3U",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "estado",
+							"value": "En preparacion",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "IDMBD",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "tiempo",
+							"value": "55",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "horaPedido",
+							"value": "22:15",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "foto",
+							"value": "",
+							"description": "",
+							"type": "file"
+						},
+						{
+							"key": "sector",
+							"value": "cerveceria",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "importe",
+							"value": "2700",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "idEmpleado",
+							"value": "5",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST Pedido",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/pedido/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzA1NDY1NDEsImV4cCI6MTUzMDU1MjcwMywiYXVkIjoiZTNiMGNmOTcyOGM1YjJhMWU4NmE1NWUyYTdjOTAwOGU4MDQzNGQyOCIsImRhdGEiOnsibm9tYnJlIjoiYmFydGVuZGVyIiwic2VjdG9yIjoiYmFydGVuZGVyIn0sImFwcCI6IkFQSSBSRVNUIENPTUFOREEgMjAxOCJ9.ik5edBiCYJB99I45ne-MURvHKRJvY7vzzACA2dEsn9c",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "estado",
+							"value": "En Preparacion",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "horaPedido",
+							"value": "22:15",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "FFFDE",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "sector",
+							"value": "mozos",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "idEmpleado",
+							"value": "1",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "idMesa",
+							"value": "2",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "importe",
+							"value": "44",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "foto",
+							"value": "",
+							"description": "",
+							"type": "file",
+							"disabled": true
+						},
+						{
+							"key": "tiempo",
+							"value": "15",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Traer Pedido Por Clave",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/pedido/IDMBD",
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzA1NTQwNTUsImV4cCI6MTUzMDU2MDIxNywiYXVkIjoiZTNiMGNmOTcyOGM1YjJhMWU4NmE1NWUyYTdjOTAwOGU4MDQzNGQyOCIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8ifSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.i9YJhGo1xuRFnSLh3tFYuw8F_T1QT7PodXbfAqagv4E",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Cambiar Estado Pedido",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/pedido/cambiarEstado",
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzA1NDY1NDEsImV4cCI6MTUzMDU1MjcwMywiYXVkIjoiZTNiMGNmOTcyOGM1YjJhMWU4NmE1NWUyYTdjOTAwOGU4MDQzNGQyOCIsImRhdGEiOnsibm9tYnJlIjoiYmFydGVuZGVyIiwic2VjdG9yIjoiYmFydGVuZGVyIn0sImFwcCI6IkFQSSBSRVNUIENPTUFOREEgMjAxOCJ9.ik5edBiCYJB99I45ne-MURvHKRJvY7vzzACA2dEsn9c",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "idPedido",
+							"value": "3",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "estado",
+							"value": "Listo Para Servir",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "idEmpleado",
+							"value": "1",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "fin",
+							"value": "22:15",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "sector",
+							"value": "",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Pedido",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/pedido/2",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzA1NDY5NjksImV4cCI6MTUzMDU1MzEzMSwiYXVkIjoiZTNiMGNmOTcyOGM1YjJhMWU4NmE1NWUyYTdjOTAwOGU4MDQzNGQyOCIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8ifSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.CI4-Vrqws5Dp96G1RR_feGtGK3MiNrePdblFb_nrUYM",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "",
+							"value": "",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Mesas mas Usadas",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/mesa/traerMasUsadas",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Mesas menos Usadas",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/mesa/traerMenosUsadas",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Cambiar Estado Mesa",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/mesa/cambiarEstado",
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzA1NDY1NDEsImV4cCI6MTUzMDU1MjcwMywiYXVkIjoiZTNiMGNmOTcyOGM1YjJhMWU4NmE1NWUyYTdjOTAwOGU4MDQzNGQyOCIsImRhdGEiOnsibm9tYnJlIjoiYmFydGVuZGVyIiwic2VjdG9yIjoiYmFydGVuZGVyIn0sImFwcCI6IkFQSSBSRVNUIENPTUFOREEgMjAxOCJ9.ik5edBiCYJB99I45ne-MURvHKRJvY7vzzACA2dEsn9c",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "idMesa",
+							"value": "2",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "estado",
+							"value": "Con Clientes",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Pedidos Mas Vendidos",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/pedido/masVendidos/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzA1NTIyNjUsImV4cCI6MTUzMDU1ODQyNywiYXVkIjoiZTNiMGNmOTcyOGM1YjJhMWU4NmE1NWUyYTdjOTAwOGU4MDQzNGQyOCIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8ifSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.QACowNVyFUs2iHaB81cKFxik3c8r5BEObPlCDY8Y8iM",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Pedidos Menos Vendidos",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/pedido/menosVendidos/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzA1NTIyNjUsImV4cCI6MTUzMDU1ODQyNywiYXVkIjoiZTNiMGNmOTcyOGM1YjJhMWU4NmE1NWUyYTdjOTAwOGU4MDQzNGQyOCIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8ifSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.QACowNVyFUs2iHaB81cKFxik3c8r5BEObPlCDY8Y8iM",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Pedidos cancelados",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/pedido/cancelados/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzA1NTIyNjUsImV4cCI6MTUzMDU1ODQyNywiYXVkIjoiZTNiMGNmOTcyOGM1YjJhMWU4NmE1NWUyYTdjOTAwOGU4MDQzNGQyOCIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8ifSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.QACowNVyFUs2iHaB81cKFxik3c8r5BEObPlCDY8Y8iM",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "INGRESOS",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/ingreso/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzA1NTMwOTksImV4cCI6MTUzMDU1OTI2MSwiYXVkIjoiZTNiMGNmOTcyOGM1YjJhMWU4NmE1NWUyYTdjOTAwOGU4MDQzNGQyOCIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8ifSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.oLOb8QN633Tv0SrQ4I-qdcHSSDY7i2jT28WFhXojZM8",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "OPERACIONES",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/operaciones/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzA1NTMwOTksImV4cCI6MTUzMDU1OTI2MSwiYXVkIjoiZTNiMGNmOTcyOGM1YjJhMWU4NmE1NWUyYTdjOTAwOGU4MDQzNGQyOCIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8ifSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.oLOb8QN633Tv0SrQ4I-qdcHSSDY7i2jT28WFhXojZM8",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "OPERACIONES POR SECTOR",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/operaciones/PorSector",
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzA1NTMwOTksImV4cCI6MTUzMDU1OTI2MSwiYXVkIjoiZTNiMGNmOTcyOGM1YjJhMWU4NmE1NWUyYTdjOTAwOGU4MDQzNGQyOCIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8ifSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.oLOb8QN633Tv0SrQ4I-qdcHSSDY7i2jT28WFhXojZM8",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "OPERACIONES POR SECTOR Y EMPLEADO",
+			"request": {
+				"url": "http://comandaframundo.zz.com.ve/tp/apirest/operaciones/PorSectorYEmpleado",
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzA1NTMwOTksImV4cCI6MTUzMDU1OTI2MSwiYXVkIjoiZTNiMGNmOTcyOGM1YjJhMWU4NmE1NWUyYTdjOTAwOGU4MDQzNGQyOCIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8ifSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.oLOb8QN633Tv0SrQ4I-qdcHSSDY7i2jT28WFhXojZM8",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
