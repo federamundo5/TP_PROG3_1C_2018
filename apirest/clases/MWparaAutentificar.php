@@ -34,20 +34,17 @@ class MWparaAutentificar
 
 			if($objDelaRespuesta->esValido)
 			{						
-				if($request->isPost())
-				{		
-					// el post sirve para todos los logeados			    
-					$response = $next($request, $response);
-				}
-				else
-				{
+			
+		
 					$payload=AutentificadorJWT::ObtenerData($token);
 					
 					$request = $request->withAttribute('sector',$payload->sector);
+					$request = $request->withAttribute('idEmpleado',$payload->idEmpleado);
+
 					$response = $next($request, $response);
 	
 					
-				}		          
+						          
 			}    
 			else
 			{
@@ -102,6 +99,7 @@ class MWparaAutentificar
 	
 					if($payload->sector=="Socio")
 					{
+						$request = $request->withAttribute('idEmpleado',$payload->idEmpleado);
 						$response = $next($request, $response);
 					}		           	
 					else

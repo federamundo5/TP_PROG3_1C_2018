@@ -2,13 +2,14 @@
 require_once 'Pedido.php';
 require_once 'IApiUsable.php';
 require_once 'Empleado.php';
+require_once 'itemPedido.php';
 
 class pedidoApi extends Pedido implements IApiUsable
 {
  	public function TraerUno($request, $response, $args) {
      	$clave=$args['clave'];
 		$pedido=Pedido::TraerPedidoClave($clave);
-
+		$pedido->items = itemPedido::TraerItemsPorPedido($pedido->idPedido);
 	/*	$datetime1 = new DateTime($pedido->horaPedido);
 		$datetime2 = new DateTime($pedido->fin);
 		$pedido->interval = date_diff($pedido->horaPedido,$pedido->fin);
@@ -27,17 +28,16 @@ class pedidoApi extends Pedido implements IApiUsable
     }
      public function TraerTodos($request, $response, $args) {
 
-		$sector = $request->getAttribute('sector');
+	//	$sector = $request->getAttribute('sector');
 		
 		$consulta = $request->getAttribute('consulta');
 
 
-		if($sector == "Socio")
-		{
+	
 			$pedidos=Pedido::TraerTodosLosPedidos();
-		}else{
-			$pedidos=Pedido::TraerPedidosPorSector($sector);
-		}
+			foreach($pedidos as $pedido){
+				$pedido->items = itemPedido::TraerItemsPorPedido($pedido->idPedido);
+			}
 
 		if($consulta == "MasVendidos"){
 			$pedidos=Pedido::TraerMasVendidos();
@@ -62,13 +62,10 @@ class pedidoApi extends Pedido implements IApiUsable
         //var_dump($ArrayDeParametros);
         $estado= $ArrayDeParametros['estado'];
         $clave= $ArrayDeParametros['clave'];
-		$tiempo= $ArrayDeParametros['tiempo'];
 		$horaPedido= $ArrayDeParametros['horaPedido'];
 		$idEmpleado= $ArrayDeParametros['idEmpleado'];
 		$importe= $ArrayDeParametros['importe'];
-		$sector= $ArrayDeParametros['sector'];
 		$idMesa= $ArrayDeParametros['idMesa'];
-		$descripcion= $ArrayDeParametros['descripcion'];
 
 
 
@@ -80,12 +77,9 @@ class pedidoApi extends Pedido implements IApiUsable
 		$pedido = new Pedido();
         $pedido->estado=$estado;
         $pedido->clave=$clave;
-		$pedido->tiempo=$tiempo;
 		$pedido->horaPedido=$horaPedido;
 		$pedido->importe=$importe;
-		$pedido->sector = $sector;
 		$pedido->idMesa = $idMesa;
-		$pedido->descripcion = $descripcion;
 
         if(isset($archivos['foto']))
         {
@@ -117,7 +111,13 @@ class pedidoApi extends Pedido implements IApiUsable
      	$cantidadDeBorrados=$pedido->BorrarPedido();
 
      	$objDelaRespuesta= new stdclass();
-	    $objDelaRespuesta->cantidad=$cantidadDeBorrados;
+		$objDelaRespuesta->cantidad=$cantidadDeBorrados;
+
+		$itemPedido= new itemPedido();
+		$itemPedido->idPedido=$id;
+		$itemPedido->BorrarItemsPedido();
+
+
 	    if($cantidadDeBorrados>0)
 	    	{
 	    		 $objDelaRespuesta->resultado="algo borro!!!";
@@ -142,7 +142,6 @@ class pedidoApi extends Pedido implements IApiUsable
 			$pedido->estado=$args['estado'];
 			$pedido->clave=$args['clave'];
 			$pedido->horaPedido=$args['horaPedido'];
-			$pedido->sector=$args['sector'];
 			$pedido->fin=$args['fin'];
 			$pedido->importe=$args['importe'];
 
@@ -151,8 +150,6 @@ class pedidoApi extends Pedido implements IApiUsable
 	
 			$pedido->idMesa=$args['idMesa'];
 			$pedido->idEmpleado=$args['idEmpleado'];
-			$pedido->tiempo=$args['tiempo'];
-			$pedido->nombreEmpleado=$args['nombreEmpleado'];
 			$idEmpleado = $pedido->idEmpleado;
 			
 		}	
@@ -176,10 +173,7 @@ class pedidoApi extends Pedido implements IApiUsable
 					$pedido->tiempo = $ArrayDeParametros['tiempo'];
 				}
 
-				if(isset($ArrayDeParametros['sector']))
-				{
-					$pedido->sector = $ArrayDeParametros['sector'];
-				}
+		
 
 				if(isset($ArrayDeParametros['fin']))
 				{

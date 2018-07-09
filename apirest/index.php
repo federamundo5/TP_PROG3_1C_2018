@@ -7,6 +7,7 @@ require 'clases/AccesoDatos.php';
 require 'clases/empleadoApi.php';
 require 'clases/encuestaApi.php';
 require 'clases/ingresoApi.php';
+require 'clases/itemPedidoApi.php';
 
 require 'clases/pedidoApi.php';
 require 'clases/mesaApi.php';
@@ -134,9 +135,32 @@ $app->group('/pedido', function () {
 
   $this->delete('/{id}', \pedidoApi::class . ':BorrarUno');
 
-  $this->put('/{id}/{estado}/{clave}/{horaPedido}/{idMesa}/{idEmpleado}/{tiempo}/{nombreEmpleado}', \pedidoApi::class . ':ModificarUno');
+  $this->put('/{id}/{estado}/{clave}/{horaPedido}/{idMesa}/{idEmpleado}', \pedidoApi::class . ':ModificarUno');
      
 })->add(\MWparaAutentificar::class . ':VerificarUsuario');
+
+
+
+$app->group('/itemPedido', function () {
+ 
+  $this->get('/', \itemPedidoApi::class . ':traerTodos');
+
+  
+
+  $this->get('/{idItem}', \itemPedidoApi::class . ':traerUno');
+
+  $this->post('/', \itemPedidoApi::class . ':CargarUno');
+
+  $this->post('/cambiarEstado', \itemPedidoApi::class . ':ModificarUno');
+
+  $this->delete('/{id}', \itemPedidoApi::class . ':BorrarUno');
+
+  $this->put('/{idItem}/{estado}/{sector}/{tiempo}/{descripcion}', \itemPedidoApi::class . ':ModificarUno');
+     
+})->add(\MWparaAutentificar::class . ':VerificarUsuario');
+
+
+
 
 
 $app->group('/encuesta', function () {

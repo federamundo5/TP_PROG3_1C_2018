@@ -21,7 +21,7 @@ class AutentificadorJWT
         if($empleado != null){
             $date = date('m/d/Y h:i:s a', time());
               ingreso::InsertarLogueo($empleado->idEmpleado, $date);
-            $datos = array('nombre' => $nombre, 'sector' => $empleado->sector);
+            $datos = array('nombre' => $nombre, 'sector' => $empleado->sector,  'idEmpleado' => $empleado->idEmpleado);
 
         $ahora = time();
         /*
