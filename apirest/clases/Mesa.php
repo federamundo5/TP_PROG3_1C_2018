@@ -82,6 +82,60 @@ class Mesa
 	}
 
 
+	public static function MesaMayorFactura() 
+	{
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT Mesa.Clave AS Mesa, MAX(Importe) AS Factura FROM `Mesa` inner join Pedido on Pedido.idMesa = Mesa.IdMesa GROUP BY Mesa.IdMesa order by MAX(Importe) DESC");
+			$consulta->execute();
+			return $consulta->fetchAll(PDO::FETCH_CLASS, "Mesa");							
+	}
+
+	public static function MesaMenorFactura() 
+	{
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT Mesa.Clave AS Mesa, MAX(Importe) AS Factura FROM `Mesa` inner join Pedido on Pedido.idMesa = Mesa.IdMesa GROUP BY Mesa.IdMesa order by MAX(Importe) ASC");
+			$consulta->execute();
+			return $consulta->fetchAll(PDO::FETCH_CLASS, "Mesa");							
+	}
+
+
+
+	
+
+
+public static function PorMeses($desde, $hasta) 
+{
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+		$consulta =$objetoAccesoDato->RetornarConsulta("select Mesa.Clave, SUM(Pedido.Importe) from Mesa inner Join Pedido on Pedido.idMesa = Mesa.IdMesa  where Pedido.HoraPedido between :desde AND :hasta
+		group by Mesa.Clave");
+		$consulta->bindValue(':desde',$desde, PDO::PARAM_STR);
+		$consulta->bindValue(':hasta', $hasta, PDO::PARAM_STR);
+		$consulta->execute();
+		return $consulta->fetchAll(PDO::FETCH_CLASS, "Mesa");							
+}
+
+
+	public static function PeoresComentarios() 
+	{
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT experiencia, puntuacionMesa, Mesa.Clave from Encuesta inner join Mesa on Mesa.IdMesa = Encuesta.idMesa order by puntuacionMesa ASC			");
+			$consulta->execute();
+			return $consulta->fetchAll(PDO::FETCH_CLASS, "Encuesta");							
+	}
+
+
+
+	public static function MejoresComentarios() 
+	{
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT experiencia, puntuacionMesa, Mesa.Clave from Encuesta inner join Mesa on Mesa.IdMesa = Encuesta.idMesa order by puntuacionMesa DESC			");
+			$consulta->execute();
+			return $consulta->fetchAll(PDO::FETCH_CLASS, "Encuesta");							
+	}
+
+
+
+
 
 
 

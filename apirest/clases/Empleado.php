@@ -107,7 +107,7 @@ class Empleado
 	public static function TraerOperacionesPorSectorYEmpleado()
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT Sector, SUM(Operaciones), IdEmpleado FROM `Empleado` GROUP By Sector, IdEmpleado");
+			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT Sector, SUM(Operaciones), idEmpleado FROM `Empleado` GROUP By Sector, idEmpleado");
 			$consulta->execute();			
 			return $consulta->fetchAll(PDO::FETCH_CLASS, "Empleado");		
 	}

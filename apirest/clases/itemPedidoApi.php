@@ -27,10 +27,19 @@ class itemPedidoApi extends itemPedido implements IApiUsable
 			$pedidos=itemPedido::TraerItemsPorSector($sector);
 		}
 
+		if($sector == "Mozos")
+		{
+			$pedidos=itemPedido::TraerItemsMozo();
+		}
+
 		if($consulta == "MasVendidos"){
 			$pedidos=Pedido::TraerMasVendidos();
 		}
+		
 
+		if($consulta == "TraerNoEntregadosATiempo"){
+			$pedidos=itemPedido::TraerNoEntregadosATiempo();
+		}
 
 		if($consulta == "MenosVendidos"){
 			$pedidos=Pedido::TraerMenosVendidos();
@@ -46,6 +55,8 @@ class itemPedidoApi extends itemPedido implements IApiUsable
 	
 
       public function CargarUno($request, $response, $args) {
+
+		try{
      	 $ArrayDeParametros = $request->getParsedBody();
         //var_dump($ArrayDeParametros);
         $estado= $ArrayDeParametros['estado'];
@@ -69,7 +80,12 @@ class itemPedidoApi extends itemPedido implements IApiUsable
 
         $itemPedido->InsertarItem();
 
-        $response->getBody()->write("se guardo el Item");
+		$response->getBody()->write("se guardo el Item");
+		}
+		catch(Exception $e)
+		{
+			$response->getBody()->write("no existe el pedido");
+		}
 
         return $response;
 	}
@@ -108,7 +124,7 @@ class itemPedidoApi extends itemPedido implements IApiUsable
 			$itempedido->idItem=$args['idItem'];
 			$itempedido->estado=$args['estado'];
 			$itempedido->sector=$args['sector'];
-			$itempedido->tiempo=$args['tiempo'];
+			$itempedido->tiempoPrevisto=$args['tiempoPrevisto'];
 			$itempedido->descripcion=$args['descripcion'];
 
 		}	
@@ -123,10 +139,22 @@ class itemPedidoApi extends itemPedido implements IApiUsable
                
 				$itempedido->estado = $ArrayDeParametros['estado'];				
 
-				if(isset($ArrayDeParametros['tiempo']))
-				{
- 
-					$itempedido->tiempo = $ArrayDeParametros['tiempo'];
+				if(isset($ArrayDeParametros['tiempoPrevisto']))
+				{	
+				$tiempo=($ArrayDeParametros['tiempoPrevisto']);
+				date_default_timezone_set('America/Argentina/Buenos_Aires');
+				$now = time();
+				$ten_minutes = $now + ($tiempo * 60);
+				$startDate = date('m-d-Y H:i:s', $now);
+				$endDate = date('m-d-Y H:i:s', $ten_minutes);
+				$itempedido->tiempoPrevisto = $endDate;
+				}
+
+				
+				if(isset($ArrayDeParametros['tiempoEntregado']))
+				{	
+				$tiempo=($ArrayDeParametros['tiempoEntregado']);
+				$itempedido->tiempoEntregado = $tiempo;
 				}
 
 		}	
@@ -140,8 +168,9 @@ class itemPedidoApi extends itemPedido implements IApiUsable
 		$resultado = $itempedido->Modificar();
 
 		$objDelaRespuesta= new stdclass();
-	    $objDelaRespuesta->resultado=$resultado;
-	    return $response->withJson($resultado, 200);		
+		$objDelaRespuesta->resultado=$resultado;
+		$response->getBody()->write("Se modifico el Item");
+	    return $response;
 	}
 	
 

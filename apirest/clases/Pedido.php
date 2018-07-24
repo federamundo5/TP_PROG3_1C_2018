@@ -108,6 +108,29 @@ class Pedido
 
 
 
+	public static function TraerMasVendidos()
+	{
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT COUNT(itempedido.IdItem) AS Vendidos, SUM(Importe), Descripcion FROM `Pedido` inner join itempedido on itempedido.IdPedido = Pedido.IdPedido group by Descripcion order by COUNT(itempedido.IdItem) ASC
+			");
+				$consulta->execute();
+			return $consulta->fetchAll(PDO::FETCH_CLASS, "Pedido");		
+	}
+
+
+	
+	public static function TraerMenosVendidos()
+	{
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT COUNT(itempedido.IdItem) AS Vendidos, SUM(Importe), Descripcion FROM `Pedido` inner join itempedido on itempedido.IdPedido = Pedido.IdPedido group by Descripcion order by COUNT(itempedido.IdItem) DESC
+			");
+				$consulta->execute();
+			return $consulta->fetchAll(PDO::FETCH_CLASS, "Pedido");		
+	}
+
+
+	
+
 
 	public static function TraerUnPedido($id) 
 	{
@@ -127,9 +150,20 @@ class Pedido
 			$consulta =$objetoAccesoDato->RetornarConsulta("select idPedido, Estado, idMesa, Clave, idEmpleado, horaPedido, foto, clave, importe, fin from Pedido where Clave = '$clave'");
 			$consulta->execute();
 			$buscado= $consulta->fetchObject('Pedido');
-			return $buscado;				
+			return $buscado;						
+	}
 
-			
+
+	
+	public static function TraerPedidoClaveMesa($clave,$claveMesa) 
+	{
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("select idPedido, Pedido.Estado, Pedido.idMesa, Pedido.Clave, horaPedido, importe, fin from Pedido inner join Mesa on Mesa.IdMesa = Pedido.idMesa where Pedido.Clave = :clave and Mesa.Clave = :claveMesa");
+			$consulta->bindValue(':clave',$clave, PDO::PARAM_STR);
+			$consulta->bindValue(':claveMesa',$claveMesa, PDO::PARAM_STR);
+			$consulta->execute();
+			$buscado= $consulta->fetchObject('Pedido');
+			return $buscado;						
 	}
 
 
@@ -153,6 +187,26 @@ class Pedido
 			$consulta->execute();
 			return $consulta->fetchAll(PDO::FETCH_CLASS, "Pedido");							
 	}
+
+
+	public static function MesasMenosImporte() 
+	{
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT Mesa.Clave, SUM(Importe)  FROM `Mesa` inner join Pedido on Pedido.idMesa = Mesa.IdMesa GROUP BY Mesa.IdMesa order by SUM(Importe) ASC		");
+			$consulta->execute();
+			return $consulta->fetchAll(PDO::FETCH_CLASS, "Pedido");							
+	}
+
+	
+	public static function MesasMasImporte() 
+	{
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT Mesa.Clave, SUM(Importe)  FROM `Mesa` inner join Pedido on Pedido.idMesa = Mesa.IdMesa GROUP BY Mesa.IdMesa order by SUM(Importe) DESC		");
+			$consulta->execute();
+			return $consulta->fetchAll(PDO::FETCH_CLASS, "Pedido");							
+	}
+
+
 
 
 	public function mostrarDatos()

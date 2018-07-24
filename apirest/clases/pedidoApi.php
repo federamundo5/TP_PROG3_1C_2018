@@ -7,24 +7,39 @@ require_once 'itemPedido.php';
 class pedidoApi extends Pedido implements IApiUsable
 {
  	public function TraerUno($request, $response, $args) {
-     	$clave=$args['clave'];
+		 $clave=$args['clave'];
+		 $consulta = $request->getAttribute('consulta');
+
+
+
 		$pedido=Pedido::TraerPedidoClave($clave);
+		 if($pedido != null)
+		 {
+			 $claveExiste  = true;
+		 }
+		
+		if($consulta == "TiempoRestante"){
+			$claveMesa=$args['claveMesa'];
+			$pedido=Pedido::TraerPedidoClaveMesa($clave,$claveMesa);
+			if($pedido == null && $claveExiste == true){
+				$response->getBody()->write("clave mesa erronea");
+                return $clave;
+			}
+		}
+
+		if ($pedido != null){
+
 		$pedido->items = itemPedido::TraerItemsPorPedido($pedido->idPedido);
-	/*	$datetime1 = new DateTime($pedido->horaPedido);
-		$datetime2 = new DateTime($pedido->fin);
-		$pedido->interval = date_diff($pedido->horaPedido,$pedido->fin);
+	
 
-		$diff = $datetime2 - $datetime1;
-		$hours = $diff / ( 60 * 60 );
 
-		$hours = $diff->h;
-		$hours = $hours + ($diff->days*24);
-		$mins = ($datetime2 - $datetime1) / 60;
-		$pedido->diff = $mins;
-		*/
-      //  $pedido->tiempoRestante =  $interval->format('%h:%i:%s');
      	$newResponse = $response->withJson($pedido, 200);  
-    	return $newResponse;
+		return $newResponse;
+	}else{
+			$response->getBody()->write("clave de pedido erronea");
+		
+			return $response;
+	}
     }
      public function TraerTodos($request, $response, $args) {
 
@@ -59,17 +74,20 @@ class pedidoApi extends Pedido implements IApiUsable
 
       public function CargarUno($request, $response, $args) {
      	 $ArrayDeParametros = $request->getParsedBody();
-        //var_dump($ArrayDeParametros);
+		//var_dump($ArrayDeParametros)
         $estado= $ArrayDeParametros['estado'];
         $clave= $ArrayDeParametros['clave'];
-		$horaPedido= $ArrayDeParametros['horaPedido'];
-		$idEmpleado= $ArrayDeParametros['idEmpleado'];
+		$idEmpleado =  $request->getAttribute('idEmpleado');
 		$importe= $ArrayDeParametros['importe'];
 		$idMesa= $ArrayDeParametros['idMesa'];
+		date_default_timezone_set('America/Argentina/Buenos_Aires');
 
 
+		$now = time();
+		$startDate = date('m-d-Y H:i:s', $now);
+		$horaPedido=$startDate; 
 
-
+ try{
                 
         $archivos = $request->getUploadedFiles();
         $destino="./fotos/";
@@ -99,7 +117,11 @@ class pedidoApi extends Pedido implements IApiUsable
         $pedido->InsertarPedido();
 
         $response->getBody()->write("se guardo el Pedido");
-
+	} 
+	catch(Exception $e)
+	{
+		$response->getBody()->write("no existe la mesa");
+	}
         return $response;
 	}
 	
@@ -134,6 +156,7 @@ class pedidoApi extends Pedido implements IApiUsable
      	//$response->getBody()->write("<h1>Modificar  uno</h1>");
 		//var_dump($ArrayDeParametros);    	
 		$pedido = new Pedido();
+
 		if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
 			$pedido = new Pedido();
 
@@ -147,9 +170,10 @@ class pedidoApi extends Pedido implements IApiUsable
 
 
 	
-	
+		
+
 			$pedido->idMesa=$args['idMesa'];
-			$pedido->idEmpleado=$args['idEmpleado'];
+			$pedido->idEmpleado=$request->getAttribute('idEmpleado');
 			$idEmpleado = $pedido->idEmpleado;
 			
 		}	
@@ -158,21 +182,13 @@ class pedidoApi extends Pedido implements IApiUsable
 				$ArrayDeParametros = $request->getParsedBody();
 				$idPedido= $ArrayDeParametros['idPedido'];
 				$estado= $ArrayDeParametros['estado'];
-				$idEmpleado= $ArrayDeParametros['idEmpleado'];
-
+				$idEmpleado =  $request->getAttribute('idEmpleado');
                
 				$pedido=Pedido::TraerUnPedido($idPedido);
 				$pedido->idEmpleado = $idEmpleado;
 				$pedido->estado = $ArrayDeParametros['estado'];				
 
-				if(isset($ArrayDeParametros['tiempo']))
-				{
-     			//	$minutes_to_add = $ArrayDeParametros['tiempo'];;
-				//	$time = new DateTime($pedido->horaPedido);
-					//$time->modify("+{$minutes_to_add} minutes");
-					$pedido->tiempo = $ArrayDeParametros['tiempo'];
-				}
-
+			
 		
 
 				if(isset($ArrayDeParametros['fin']))

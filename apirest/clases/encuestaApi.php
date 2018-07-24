@@ -1,5 +1,8 @@
 <?php
 require_once 'Encuesta.php';
+require_once 'Pedido.php';
+require_once 'Mesa.php';
+
 require_once 'IApiUsable.php';
 
 class encuestaApi extends Encuesta implements IApiUsable
@@ -20,23 +23,27 @@ class encuestaApi extends Encuesta implements IApiUsable
       public function CargarUno($request, $response, $args) {
      	 $ArrayDeParametros = $request->getParsedBody();
 		  $experiencia= $ArrayDeParametros['experiencia'];
-		  $idMozo= $ArrayDeParametros['idMozo'];
-		  $idCocinero= $ArrayDeParametros['idCocinero'];
 		  $puntuacionMozo= $ArrayDeParametros['puntuacionMozo'];
 		  $puntuacionRestaurante= $ArrayDeParametros['puntuacionRestaurante'];
 		  $puntuacionMesa= $ArrayDeParametros['puntuacionMesa'];
 		  $puntuacionCocinero= $ArrayDeParametros['puntuacionCocinero'];
+		  $clavePedido= $ArrayDeParametros['clavePedido'];
+
   
-  
+		  $pedido = Pedido::TraerPedidoClave($clavePedido);
+		  if ($pedido == null)
+		  {
+			return $response->getBody()->write("clave pedido erroneo");
+		  }
+          $mesa =  Mesa::TraerUnaMesa($pedido->idMesa); 
 		  
 		  $encuesta = new Encuesta();
 		  $encuesta->experiencia=$experiencia;
-		  $encuesta->idMozo=$idMozo;
-		  $encuesta->idCocinero=$idCocinero;
 		  $encuesta->puntuacionMozo=$puntuacionMozo;
 		  $encuesta->puntuacionRestaurante=$puntuacionRestaurante;
 		  $encuesta->puntuacionCocinero=$puntuacionCocinero;
 		  $encuesta->puntuacionMesa=$puntuacionMesa;
+		  $encuesta->idMesa = $mesa->IdMesa;
   
 
         $encuesta->InsertarEncuesta();

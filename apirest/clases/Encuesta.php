@@ -3,8 +3,7 @@ class Encuesta
 {
 	public $idEncuesta;
 	public $experiencia;
-	public $idMozo;
-	public $idCocinero;
+	public $idMesa;
 	public $puntuacionMozo;
 	public $puntuacionMesa;
 	public $puntuacionCocinero;
@@ -18,16 +17,15 @@ class Encuesta
 	 public function InsertarEncuesta()
 	 {
 				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-				$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into Encuesta (Experiencia,idMozo,idCocinero,
-				puntuacionMozo,puntuacionRestaurante,puntuacionCocinero,puntuacionMesa)
-				values(:experiencia,:idMozo,:idCocinero,:puntuacionMozo,:puntuacionRestaurante,:puntuacionCocinero,:puntuacionMesa)");
+				$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into Encuesta (Experiencia,
+				puntuacionMozo,puntuacionRestaurante,puntuacionCocinero,puntuacionMesa,idMesa)
+				values(:experiencia,:puntuacionMozo,:puntuacionRestaurante,:puntuacionCocinero,:puntuacionMesa,:idMesa)");
 				$consulta->bindValue(':experiencia', $this->experiencia, PDO::PARAM_STR);
-				$consulta->bindValue(':idMozo', $this->idMozo, PDO::PARAM_STR);
-				$consulta->bindValue(':idCocinero', $this->idCocinero, PDO::PARAM_INT);
 				$consulta->bindValue(':puntuacionMozo', $this->puntuacionMozo, PDO::PARAM_INT);
 				$consulta->bindValue(':puntuacionRestaurante', $this->puntuacionRestaurante, PDO::PARAM_INT);
 				$consulta->bindValue(':puntuacionCocinero', $this->puntuacionCocinero, PDO::PARAM_INT);
 				$consulta->bindValue(':puntuacionMesa', $this->puntuacionMesa, PDO::PARAM_INT);
+				$consulta->bindValue(':idMesa', $this->idMesa, PDO::PARAM_INT);
 
 				$consulta->execute();		
 				return $objetoAccesoDato->RetornarUltimoIdInsertado();
@@ -45,9 +43,6 @@ class Encuesta
 
 
 
-	public function mostrarDatos()
-	{
-	  	return "Metodo mostrar:".$this->estado."  ".$this->clave."  ".$this->tiempo;
-	}
+	
 
 }

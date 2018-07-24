@@ -81,6 +81,7 @@ $app->group('/operaciones', function () {
 
   $this->get('/PorSectorYEmpleado', \operacionesApi::class . ':traerTodos')->add(\MWparaAutentificar::class . ':OperacionesPorSectorYEmpleado');
 
+
      
 })->add(\MWparaAutentificar::class . ':VerificarSocio');
 
@@ -97,6 +98,24 @@ $app->group('/mesa', function () {
 
 
   $this->get('/traerMenosUsadas', \mesaApi::class . ':traerTodos')->add(\MWparaAutentificar::class . ':MesasMenosUsadas');
+
+  $this->get('/MesasMenosImporte', \mesaApi::class . ':traerTodos')->add(\MWparaAutentificar::class . ':MesasMenosImporte');
+
+  $this->get('/MesasMasImporte', \mesaApi::class . ':traerTodos')->add(\MWparaAutentificar::class . ':MesasMasImporte');
+
+  $this->get('/MesaMayorFactura', \mesaApi::class . ':traerTodos')->add(\MWparaAutentificar::class . ':MesaMayorFactura');
+
+  $this->get('/MesaMenorFactura', \mesaApi::class . ':traerTodos')->add(\MWparaAutentificar::class . ':MesaMenorFactura');
+
+  $this->get('/PeoresComentarios', \mesaApi::class . ':traerTodos')->add(\MWparaAutentificar::class . ':PeoresComentarios');
+
+  $this->get('/MejoresComentarios', \mesaApi::class . ':traerTodos')->add(\MWparaAutentificar::class . ':MejoresComentarios');
+
+  $this->post('/PorMeses', \mesaApi::class . ':traerTodos')->add(\MWparaAutentificar::class . ':PorMeses');
+
+
+
+
 
 
   $this->get('/{id}', \mesaApi::class . ':traerUno');
@@ -115,29 +134,32 @@ $app->group('/mesa', function () {
 $app->group('/pedido', function () {
  
   $this->get('/', \pedidoApi::class . ':traerTodos');
+
+  $this->get('/{clave}/{claveMesa}', \pedidoApi::class . ':traerUno')->add(\MWparaAutentificar::class . ':TiempoRestante');
+
  
 
   $this->get('/{clave}', \pedidoApi::class . ':traerUno');
 
-  $this->get('/masVendidos/', \pedidoApi::class . ':traerTodos')->add(\MWparaAutentificar::class . ':MasVendidos');
+  $this->get('/masVendidos/', \pedidoApi::class . ':traerTodos')->add(\MWparaAutentificar::class . ':MasVendidos')->add(\MWparaAutentificar::class . ':VerificarUsuario');
 
 
-  $this->get('/menosVendidos/', \pedidoApi::class . ':traerTodos')->add(\MWparaAutentificar::class . ':MenosVendidos');
+  $this->get('/menosVendidos/', \pedidoApi::class . ':traerTodos')->add(\MWparaAutentificar::class . ':MenosVendidos')->add(\MWparaAutentificar::class . ':VerificarUsuario');
 
-  $this->get('/cancelados/', \pedidoApi::class . ':traerTodos')->add(\MWparaAutentificar::class . ':Cancelados');
-
-
-  $this->post('/', \pedidoApi::class . ':CargarUno');
+  $this->get('/cancelados/', \pedidoApi::class . ':traerTodos')->add(\MWparaAutentificar::class . ':Cancelados')->add(\MWparaAutentificar::class . ':VerificarUsuario');
 
 
-  $this->post('/cambiarEstado', \pedidoApi::class . ':ModificarUno');
+  $this->post('/', \pedidoApi::class . ':CargarUno')->add(\MWparaAutentificar::class . ':VerificarUsuario');
 
 
-  $this->delete('/{id}', \pedidoApi::class . ':BorrarUno');
+  $this->post('/cambiarEstado', \pedidoApi::class . ':ModificarUno')->add(\MWparaAutentificar::class . ':VerificarUsuario')->add(\MWparaAutentificar::class . ':Cerrar');
 
-  $this->put('/{id}/{estado}/{clave}/{horaPedido}/{idMesa}/{idEmpleado}', \pedidoApi::class . ':ModificarUno');
+
+  $this->delete('/{id}', \pedidoApi::class . ':BorrarUno')->add(\MWparaAutentificar::class . ':VerificarUsuario');
+
+  $this->put('/{id}/{estado}/{clave}/{horaPedido}/{idMesa}/{idEmpleado}', \pedidoApi::class . ':ModificarUno')->add(\MWparaAutentificar::class . ':VerificarUsuario');
      
-})->add(\MWparaAutentificar::class . ':VerificarUsuario');
+});
 
 
 
@@ -146,6 +168,8 @@ $app->group('/itemPedido', function () {
   $this->get('/', \itemPedidoApi::class . ':traerTodos');
 
   
+  $this->get('/TraerNoEntregadosATiempo', \itemPedidoApi::class . ':traerTodos')->add(\MWparaAutentificar::class . ':TraerNoEntregadosATiempo');
+
 
   $this->get('/{idItem}', \itemPedidoApi::class . ':traerUno');
 
@@ -171,10 +195,7 @@ $app->group('/encuesta', function () {
 
   $this->post('/', \encuestaApi::class . ':CargarUno');
 
-  $this->delete('/{id}', \encuestaApi::class . ':BorrarUno');
-
-  $this->put('/{id}/{estado}/{clave}/{horaPedido}/{idMesa}/{idEmpleado}/{tiempo}/{nombreEmpleado}', \encuestaApi::class . ':ModificarUno');
-     
+ 
 });
 
 

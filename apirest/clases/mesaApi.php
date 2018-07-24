@@ -17,16 +17,63 @@ class mesaApi extends Mesa implements IApiUsable
 		$consulta = $request->getAttribute('consulta');
 
 		if($consulta == "MasUsadas"){
-		$pedidos=Pedido::MesaMasUsada($sector);
+		$pedidos=Pedido::MesaMasUsada();
 	   $newResponse = $response->withJson($pedidos, 200);  
 		return $newResponse;
 		}
 
 		if($consulta == "MenosUsadas"){
-			$pedidos=Pedido::MesaMenosUsada($sector);
+			$pedidos=Pedido::MesaMenosUsada();
 		   $newResponse = $response->withJson($pedidos, 200);  
 			return $newResponse;
 			}
+
+		if($consulta == "MesasMenosImporte"){
+			$pedidos=Pedido::MesasMenosImporte();
+		   $newResponse = $response->withJson($pedidos, 200);  
+			return $newResponse;
+			}
+
+
+			if($consulta == "MesasMasImporte"){
+				$pedidos=Pedido::MesasMasImporte();
+			   $newResponse = $response->withJson($pedidos, 200);  
+				return $newResponse;
+			}
+
+			if($consulta == "MesaMayorFactura"){
+				$mesas=Mesa::MesaMayorFactura();
+			   $newResponse = $response->withJson($mesas, 200);  
+				return $newResponse;
+			}
+
+			if($consulta == "MesaMenorFactura"){
+				$mesas=Mesa::MesaMenorFactura();
+			   $newResponse = $response->withJson($mesas, 200);  
+				return $newResponse;
+			}
+			
+					if($consulta == "PorMeses"){
+						$ArrayDeParametros = $request->getParsedBody();
+
+						$desde=$ArrayDeParametros['desde'];
+						$hasta=$ArrayDeParametros['hasta'];
+				$mesas=Mesa::PorMeses($desde, $hasta);
+			   $newResponse = $response->withJson($mesas, 200);  
+				return $newResponse;
+			}
+
+			if($consulta == "PeoresComentarios"){
+				$mesas=Mesa::PeoresComentarios();
+			   $newResponse = $response->withJson($mesas, 200);  
+				return $newResponse;
+			}	
+				if($consulta == "MejoresComentarios"){
+				$mesas=Mesa::MejoresComentarios();
+			   $newResponse = $response->withJson($mesas, 200);  
+				return $newResponse;
+			}
+
 
       	$empleados=Mesa::TraerTodasLasMesas();
      	$newResponse = $response->withJson($empleados, 200);  
