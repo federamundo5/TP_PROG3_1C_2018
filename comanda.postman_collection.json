@@ -284,6 +284,99 @@
 						"description": ""
 					},
 					"response": []
+				},
+				{
+					"name": "Mesas con menor importe",
+					"request": {
+						"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/mesa/MesasMenosImporte",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Mesas con mayor importe",
+					"request": {
+						"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/mesa/MesasMasImporte",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Mesas con menor factura",
+					"request": {
+						"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/mesa/MesaMenorFactura",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Mesas con mayor factura",
+					"request": {
+						"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/mesa/MesaMayorFactura",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Mesas con peores comentarios",
+					"request": {
+						"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/mesa/PeoresComentarios",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Mesas con mejores comentarios",
+					"request": {
+						"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/mesa/MejoresComentarios",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "importes mesas entre fechas",
+					"request": {
+						"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/mesa/PorMeses",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "desde",
+									"value": "07-01-2018",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "hasta",
+									"value": "07-25-2018",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
 				}
 			]
 		},
@@ -363,7 +456,7 @@
 				{
 					"name": "Traer Pedido Por Clave",
 					"request": {
-						"url": "http://comandaframundo.zz.com.ve/tp/apirest/pedido/IDMBD",
+						"url": "http://comandaframundo.zz.com.ve/tp/apirest/pedido/IDMBD/MESA1",
 						"method": "GET",
 						"header": [
 							{
@@ -578,6 +671,23 @@
 								}
 							]
 						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Pedidos no entregados a tiempo",
+					"request": {
+						"url": "http://comandaframundo.zz.com.ve/tp/apirest/itemPedido/TraerNoEntregadosATiempo",
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzIzMDE1MTIsImV4cCI6MTUzMjMwNzY3NCwiYXVkIjoiZGVlODFkMmUxMjIzOGY2NmE0NzNkMDAyMDgyOTc0M2JmMWYyNGEyYSIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8iLCJpZEVtcGxlYWRvIjoxfSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.Ttj58jpik2GjMiuOesU4sdErI5lz2FKrucjk8D4X6os",
+								"description": ""
+							}
+						],
+						"body": {},
 						"description": ""
 					},
 					"response": []
