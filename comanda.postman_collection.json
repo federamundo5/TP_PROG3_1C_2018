@@ -356,24 +356,41 @@
 					"request": {
 						"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/mesa/PorMeses",
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzI5MDE5OTAsImV4cCI6MTUzMjkwODE1MiwiYXVkIjoiNTMzN2FlNGViNmVlOTdlZWQ4M2I5NzkzZTg5NjdlNTg0ZGUyZjQ1ZCIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8iLCJpZEVtcGxlYWRvIjoxfSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.BRm-k_VbsMCRYZ0s8TVj3sra_RoudLdMNT_PjyzuPAM",
+								"description": ""
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
 								{
 									"key": "desde",
-									"value": "07-01-2018",
+									"value": "2018-02-02",
 									"description": "",
 									"type": "text"
 								},
 								{
 									"key": "hasta",
-									"value": "07-25-2018",
+									"value": "2019-02-02",
 									"description": "",
 									"type": "text"
 								}
 							]
 						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Promedio Mensual Mesa",
+					"request": {
+						"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/mesa/PromedioMensualMesa",
+						"method": "GET",
+						"header": [],
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -456,7 +473,7 @@
 				{
 					"name": "Traer Pedido Por Clave",
 					"request": {
-						"url": "http://comandaframundo.zz.com.ve/tp/apirest/pedido/IDMBD/MESA1",
+						"url": "http://comandaframundo.zz.com.ve/tp/apirest/pedido/FFE33/MESA2",
 						"method": "GET",
 						"header": [
 							{
@@ -479,7 +496,7 @@
 						"header": [
 							{
 								"key": "token",
-								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzA1NDY1NDEsImV4cCI6MTUzMDU1MjcwMywiYXVkIjoiZTNiMGNmOTcyOGM1YjJhMWU4NmE1NWUyYTdjOTAwOGU4MDQzNGQyOCIsImRhdGEiOnsibm9tYnJlIjoiYmFydGVuZGVyIiwic2VjdG9yIjoiYmFydGVuZGVyIn0sImFwcCI6IkFQSSBSRVNUIENPTUFOREEgMjAxOCJ9.ik5edBiCYJB99I45ne-MURvHKRJvY7vzzACA2dEsn9c",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzI4OTk3OTQsImV4cCI6MTUzMjkwNTk1NiwiYXVkIjoiNTMzN2FlNGViNmVlOTdlZWQ4M2I5NzkzZTg5NjdlNTg0ZGUyZjQ1ZCIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8iLCJpZEVtcGxlYWRvIjoxfSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.U7YjMvoRrON8mykBr1nwWb_ZGt6VxkU2Ice_t_6k0j4",
 								"description": ""
 							}
 						],
@@ -500,7 +517,7 @@
 								},
 								{
 									"key": "clave",
-									"value": "FFFDE",
+									"value": "FFE332",
 									"description": "",
 									"type": "text"
 								},
@@ -530,10 +547,9 @@
 								},
 								{
 									"key": "foto",
-									"value": "",
 									"description": "",
 									"type": "file",
-									"disabled": true
+									"src": "Logo_of_Western_Sydney_Wanderers_FC.svg.png"
 								},
 								{
 									"key": "tiempo",
@@ -644,7 +660,7 @@
 						"header": [
 							{
 								"key": "token",
-								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzExNzAwNjMsImV4cCI6MTUzMTE3NjIyNSwiYXVkIjoiMmFjN2ZiNzBhNTliYjc0YzI5ZTUxYTI2OTk3YmJiMzkwOGMyMDI5ZiIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8iLCJpZEVtcGxlYWRvIjoxfSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.pdsCyTKRm9XZEUGNl0Epbw6MCB2gtUIsKm9dGyVvNO8",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzI4OTk3OTQsImV4cCI6MTUzMjkwNTk1NiwiYXVkIjoiNTMzN2FlNGViNmVlOTdlZWQ4M2I5NzkzZTg5NjdlNTg0ZGUyZjQ1ZCIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8iLCJpZEVtcGxlYWRvIjoxfSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.U7YjMvoRrON8mykBr1nwWb_ZGt6VxkU2Ice_t_6k0j4",
 								"description": ""
 							}
 						],
@@ -664,10 +680,17 @@
 									"type": "text"
 								},
 								{
-									"key": "tiempo",
-									"value": "22:30",
+									"key": "tiempoPrevisto",
+									"value": "5",
 									"description": "",
 									"type": "text"
+								},
+								{
+									"key": "tiempoEntregado",
+									"value": "2018-07-18 04:10:00",
+									"description": "",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -689,6 +712,56 @@
 						],
 						"body": {},
 						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Importe mensual pedidos",
+					"request": {
+						"url": "http://comandaframundo.zz.com.ve/tp/apirest/pedido/PromedioMensualImportes/",
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzA1NTMwOTksImV4cCI6MTUzMDU1OTI2MSwiYXVkIjoiZTNiMGNmOTcyOGM1YjJhMWU4NmE1NWUyYTdjOTAwOGU4MDQzNGQyOCIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8ifSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.oLOb8QN633Tv0SrQ4I-qdcHSSDY7i2jT28WFhXojZM8",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Facturacion por fecha",
+					"request": {
+						"url": "http://comandaframundo.zz.com.ve/tp/apirest/pedido/FacturacionPorFecha/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzIyODcxMjMsImV4cCI6MTUzMjI5MzI4NSwiYXVkIjoiM2Y0ZjdiMDEwMmM1MDc3NTFiMmRkZTAzMWZkOGU3ZjMzYTJjNTI2OSIsImRhdGEiOnsibm9tYnJlIjoiSXp6aWUiLCJzZWN0b3IiOiJtb3pvcyIsImlkRW1wbGVhZG8iOjJ9LCJhcHAiOiJBUEkgUkVTVCBDT01BTkRBIDIwMTgifQ.Z2HVdR2kegsbvm3vee3RhAjtx8HZx1mx-uUcFxh8z0A",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": " desde",
+									"value": "2018-05-29",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "hasta",
+									"value": "2018-11-29",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": "FACTURACION POR FECHA."
 					},
 					"response": []
 				}
@@ -849,6 +922,89 @@
 						"description": ""
 					},
 					"response": []
+				},
+				{
+					"name": "INGRESOS PROMEDIO Mensual",
+					"request": {
+						"url": "http://comandaframundo.zz.com.ve/tp/apirest/ingreso/PromedioMensual",
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzI5MDExNzAsImV4cCI6MTUzMjkwNzMzMiwiYXVkIjoiNTMzN2FlNGViNmVlOTdlZWQ4M2I5NzkzZTg5NjdlNTg0ZGUyZjQ1ZCIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8iLCJpZEVtcGxlYWRvIjoxfSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.eJjyyR-6vcPSctwYFcV3ao25DGFIII2QYz753DmmKps",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Operaciones Mensuales",
+					"request": {
+						"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/operaciones/OperacionesPorMes",
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzI5MDE5OTAsImV4cCI6MTUzMjkwODE1MiwiYXVkIjoiNTMzN2FlNGViNmVlOTdlZWQ4M2I5NzkzZTg5NjdlNTg0ZGUyZjQ1ZCIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8iLCJpZEVtcGxlYWRvIjoxfSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.BRm-k_VbsMCRYZ0s8TVj3sra_RoudLdMNT_PjyzuPAM",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "desde",
+									"value": "2018-02-02",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "hasta",
+									"value": "2019-02-02",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "operaciones por fecha",
+					"request": {
+						"url": "http://comandaframundo.zz.com.ve/tp/apirest/index.php/operaciones/OperacionesPorMes",
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzI5MDE5OTAsImV4cCI6MTUzMjkwODE1MiwiYXVkIjoiNTMzN2FlNGViNmVlOTdlZWQ4M2I5NzkzZTg5NjdlNTg0ZGUyZjQ1ZCIsImRhdGEiOnsibm9tYnJlIjoiQ2FybG9zIiwic2VjdG9yIjoiU29jaW8iLCJpZEVtcGxlYWRvIjoxfSwiYXBwIjoiQVBJIFJFU1QgQ09NQU5EQSAyMDE4In0.BRm-k_VbsMCRYZ0s8TVj3sra_RoudLdMNT_PjyzuPAM",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "desde",
+									"value": "2018-02-02",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "hasta",
+									"value": "2019-02-02",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
 				}
 			]
 		},
@@ -927,6 +1083,39 @@
 						],
 						"body": {},
 						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Encuestas por fecha",
+					"request": {
+						"url": "http://comandaframundo.zz.com.ve/tp/apirest/encuesta/EncuestasPorMes",
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzIyODcxMjMsImV4cCI6MTUzMjI5MzI4NSwiYXVkIjoiM2Y0ZjdiMDEwMmM1MDc3NTFiMmRkZTAzMWZkOGU3ZjMzYTJjNTI2OSIsImRhdGEiOnsibm9tYnJlIjoiSXp6aWUiLCJzZWN0b3IiOiJtb3pvcyIsImlkRW1wbGVhZG8iOjJ9LCJhcHAiOiJBUEkgUkVTVCBDT01BTkRBIDIwMTgifQ.Z2HVdR2kegsbvm3vee3RhAjtx8HZx1mx-uUcFxh8z0A",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": " desde",
+									"value": "2018-05-29",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "hasta",
+									"value": "2018-11-29",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": "Encuestas por fecha"
 					},
 					"response": []
 				}
